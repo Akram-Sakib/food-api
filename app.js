@@ -1,8 +1,16 @@
 let searchFood = () => {
+  const cardRow = document.getElementById("card-row");
   const searchField = document.getElementById("search-field");
   searchValue = searchField.value;
+  if (searchValue == "") {
+   return (cardRow.innerHTML = `
+      <h3 class='mx-auto text-center'><strong>Please!</strong> Search By Food Name</h3>
+      `);
+  }
     //Clear Data
   searchField.value = "";
+
+  
     //Search Data
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchValue}`;
 
@@ -17,6 +25,11 @@ const displayMeals = (meals)=>{
     const mealDetails = document.getElementById("meal-details");
     mealDetails.textContent = "";
 
+     if (meals == null) {
+     mealDetails.innerHTML = `
+      <h3 class='mx-auto text-center'><strong>Sorry!</strong> Your searched Food is not available</h3>
+      `;
+    }
       meals.forEach((meal) => {
         const div = document.createElement("div");
         div.classList.add("col"); 
