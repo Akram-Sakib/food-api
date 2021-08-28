@@ -1,8 +1,10 @@
 let searchFood = () => {
   const cardRow = document.getElementById("card-row");
+  const mealDetails = document.getElementById("meal-details");
   const searchField = document.getElementById("search-field");
   searchValue = searchField.value;
   if (searchValue == "") {
+    mealDetails.textContent = '';
    return (cardRow.innerHTML = `
       <h3 class='mx-auto text-center'><strong>Please!</strong> Search By Food Name</h3>
       `);
